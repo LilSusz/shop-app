@@ -2,15 +2,21 @@ import styles from './Product.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const Product = props => {
+
+  const [currentColor, setCurrentColor] = useState(props.colors[0]);
+  const [currentName, setCurrentName] = useState(props.name);
+  const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
         <img 
           className={styles.image}
-          alt="Kodilla shirt"
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-kodilla--black.jpg`} />
+          alt={`${currentName} shirt`}
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${currentName}--${currentColor}.jpg`} />
       </div>
       <div>
         <header>
